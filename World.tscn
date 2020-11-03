@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://World/bush.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/GrassBackground.png" type="Texture" id=3]
+
+[node name="World" type="Node2D"]
+
+[node name="TextureRectBackground" type="TextureRect" parent="."]
+visible = false
+margin_right = 320.0
+margin_bottom = 184.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 160, 90 )
+scale = Vector2( 1.06667, 1.06667 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 180 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/StaticBody2D"]
+polygon = PoolVector2Array( 0, 0, 72.103, 0, 240, 0, 48, 40, 48, 72, 48, 128, 112, 128, 160, 128, 240, 128, 240, 64, 240, 0, 256, 0, 256, 64, 256, 152, 0, 152 )
+
+[node name="bush" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 192, 40 )
+
+[node name="bush2" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 104, 96 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 112, 48 )
+scale = Vector2( 1, 1 )
